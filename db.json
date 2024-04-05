@@ -1,0 +1,94 @@
+{
+  "players": [
+    {
+      "id": "1",
+      "name": "Lionel Messi",
+      "age": 34,
+      "position": "Forward",
+      "nationality": "Argentina",
+      "team": "Paris Saint-Germain",
+      "championsLeagueWins": 7
+    },
+    {
+      "id": "2",
+      "name": "Cristiano Ronaldo",
+      "age": 36,
+      "position": "Forward",
+      "nationality": "Portugal",
+      "team": "Manchester United",
+      "championsLeagueWins": 3
+    },
+    {
+      "id": "3",
+      "name": "Neymar Jr",
+      "age": 29,
+      "position": "Forward",
+      "nationality": "Brazil",
+      "team": "Paris Saint-Germain",
+      "championsLeagueWins": 2
+    },
+    {
+      "id": "4",
+      "name": "Kevin De Bruyne",
+      "age": 30,
+      "position": "Midfielder",
+      "nationality": "Belgium",
+      "team": "Manchester City",
+      "championsLeagueWins": 1
+    },
+    {
+      "id": "5",
+      "name": "Mohamed Salah",
+      "age": 29,
+      "position": "Forward",
+      "nationality": "Egypt",
+      "team": "Liverpool",
+      "championsLeagueWins": 1
+    },
+    {
+      "id": "6",
+      "name": "Kylian Mbappe",
+      "age": 22,
+      "position": "Forward",
+      "nationality": "France",
+      "team": "Paris Saint-Germain",
+      "championsLeagueWins": 1
+    },
+    {
+      "id": "7",
+      "name": "Robert Lewandowski",
+      "age": 33,
+      "position": "Forward",
+      "nationality": "Poland",
+      "team": "Bayern Munich",
+      "championsLeagueWins": 2
+    },
+    {
+      "id": "8",
+      "name": "Sergio Ramos",
+      "age": 35,
+      "position": "Defender",
+      "nationality": "Spain",
+      "team": "Paris Saint-Germain",
+      "championsLeagueWins": 2
+    },
+    {
+      "id": "9",
+      "name": "Virgil van Dijk",
+      "age": 30,
+      "position": "Defender",
+      "nationality": "Netherlands",
+      "team": "Liverpool",
+      "championsLeagueWins": 1
+    },
+    {
+      "id": "10",
+      "name": "Luka Modric",
+      "age": 35,
+      "position": "Midfielder",
+      "nationality": "Croatia",
+      "team": "Real Madrid",
+      "championsLeagueWins": 3
+    }
+  ]
+}

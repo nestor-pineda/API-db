@@ -1,0 +1,5 @@
+Create a pagination
+delete player
+edit player
+Play with postman
+play with the url query params
