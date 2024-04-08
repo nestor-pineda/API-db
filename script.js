@@ -1,8 +1,10 @@
 const playersContainer = document.querySelector('.players');
+const spiner = document.querySelector('.spiner');
+const searchButton = document.querySelector('.searchButton');
 
 const createPlayerElement = (container) => {
   return (player) => {
-    // console.log(player);
+
     const playerElement = document.createElement('div');
     playerElement.classList.add('playerItem');
 
@@ -19,41 +21,60 @@ const createPlayerElement = (container) => {
     detailsLink.href = `player.html?id=${id}`;
 
     playerElement.append(nameElement, teamElement, detailsLink);
-    console.log(playerElement);
-
     container.append(playerElement);
-
-    console.log(container);
   };
 }
 
-const fetchPlayers = async (name) => {
-  const url = new URL('http://localhost:3000/players');
-  const queryParams = { 'name': name || '' };
-  // const queryParams = { '_q': name || '' };
+let loading = false;
 
-  Object.entries(queryParams).forEach(([key, value]) => url.searchParams.append(key, value));
+function updateSpiner() {
+  spiner.style.display = loading ? 'block' : 'none';
+}
+const fetchPlayers = async (playerName) => {
+  try {
+    loading = true;
+    updateSpiner();
 
-  console.log(url);
+    const url = new URL('http://localhost:3000/players');
+    const queryParams = { 
+      _limit: 5,
+      'name': playerName || '',
+    };
 
-  const response = await fetch(url);
-  console.log(response);
-  const players = await response.json();
-  
-  console.log(players);
+    Object.entries(queryParams).forEach(([key, value]) => {
+      if (key && value) url.searchParams.append(key, value);
+    });
 
-  playersContainer.innerHTML = '';
-  players.forEach(createPlayerElement(playersContainer));
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch players: ${response.status} ${response.statusText}`);
+    }
+
+    const allPlayers = await response.json();
+
+    const filteredPlayers = allPlayers.filter(player => 
+      player.name && playerName && 
+      player.name.toLowerCase().includes(playerName.toLowerCase())
+    );
+
+    playersContainer.innerHTML = '';
+
+    (filteredPlayers.length > 0 ? filteredPlayers : allPlayers).forEach(createPlayerElement(playersContainer));
+
+  } catch (error) {
+    console.error(error);
+  } finally {
+    loading = false;
+    updateSpiner();
+  }
 };
 
-
-// Search players
-const searchPlayer = document.querySelector('.searchPlayer');
-
-searchPlayer.addEventListener('submit', (event) => {
+searchButton.addEventListener('click', async (event) => {
   event.preventDefault();
-  const player = searchPlayer.name.value;// ".player" is the name atribute in the html form
-  fetchPlayers(player);
+  const playerName = document.querySelector('input[name="name"]').value;
+  await fetchPlayers(playerName);
 });
 
 window.addEventListener('DOMContentLoaded', () => fetchPlayers());
+window.addEventListener('change', updateSpiner);
