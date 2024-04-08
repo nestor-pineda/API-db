@@ -3,3 +3,4 @@ delete player
 edit player
 Play with postman
 play with the url query params
+FormData Object apuntar en Evernote (en create.js)
